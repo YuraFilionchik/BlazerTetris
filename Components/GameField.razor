@@ -1,0 +1,33 @@
+@inherits BlazorApp.Components.GameFieldModel
+
+
+<div id="tetris" class="tetris">
+  <div id="tetrisleft">
+   <div id="tetriscanvas" style="width:@(Size.Width+"px"); height:@(Size.Height+"px")">
+       
+       @foreach (CellComponentmodel cell in Cells)
+       {
+           <CellComponent CellSize="@cell.CellSize" 
+                          CellColor="@cell.CellColor"
+                          PosInField="@cell.PosInField"
+                          Empty="@cell.Empty"/>
+       }
+   </div>
+  </div>
+  <div id="tetrisright">
+   <div align="center"><b>T E T R I S</b></div>
+      <p class="info">&harr;: move left/right;
+          <br>&uarr;: rotate;
+          <br>&darr; or _: drop;
+          <br>Esc: pause
+      </p>
+      <div class="buttons">
+          <button @onclick="StartGame">Start</button>
+          <button @onclick="StopGame">Stop</button>
+      </div>
+   <canvas id="figurecanvas" width="120" height="120"></canvas>
+   <p class="info" id="tetriscount"></p>
+  </div>
+  <div class="clear"></div>
+ </div>
+

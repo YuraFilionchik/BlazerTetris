@@ -1,0 +1,33 @@
+﻿@page "/counter"
+
+<h1>Counter</h1>
+
+<p>Current count: @currentCount</p>
+
+<button class="btn btn-primary" @onclick="IncrementCount">Click me</button>
+
+@code {
+    
+    private  int currentCount = ReadCounter();
+    private static string fileCounter="counter.txt";
+    [Parameter]
+    public int IncrementAmount{get;set;} =1;
+    private void IncrementCount()
+    {
+        currentCount+=IncrementAmount;
+        SaveCounter();
+    }
+    private static int ReadCounter()
+    {
+        if(File.Exists(fileCounter))
+    {
+        string C=System.IO.File.ReadAllText(fileCounter);
+       if(!int.TryParse(C, out int count)) return 0;
+       else return count;
+    } else return 0;
+    }
+    private void SaveCounter()
+    {
+File.WriteAllText(fileCounter,currentCount.ToString());
+    }
+}
