@@ -32,9 +32,10 @@ namespace BlazorApp.Components
             
             
         }
-
+public static GameFieldModel Game ;
         public GameFieldModel()
         {
+            Game=this;
             if (Size.Height == 0 || Size.Width == 0) Size = new Size { Height = 600, Width = 300 };
             Cells = new CellComponentmodel[Row_count, Col_count];
             builder=new FigureBuilder(CellSize);
