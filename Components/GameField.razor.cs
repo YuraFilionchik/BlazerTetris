@@ -17,7 +17,7 @@ namespace BlazorApp.Components
         public Size Size { get; set; } //size of game field
         public CellComponentmodel[,] Cells; //конечный вариант поля для отрисовки
         public CellComponentmodel[,] StaticCells; //неподвижное поле с уже лежащими фигурами
-        private Timer timer;
+        public Timer timer;
         private FigureBuilder builder;
         public iFigure CurrentFigure;
         public iFigure NextFigure;
